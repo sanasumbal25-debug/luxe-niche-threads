@@ -657,9 +657,6 @@ body {
   display: flex;
   flex-direction: row;
   list-style: none;
-  gap: 25px;
-  margin: 0;
-  padding: 0;
 }
 
 .nav-links li {
