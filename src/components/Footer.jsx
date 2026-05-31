@@ -1,41 +1,43 @@
+import { FaFacebookF, FaInstagram, FaWhatsapp } from "react-icons/fa";
+
 function Footer() {
   return (
     <footer className="footer">
       <h3>LUXE NICHE THREADS</h3>
 
-      <p>
-        Elegance Woven Into Every Thread | Stitched &
-        Unstitched Collections
-      </p>
+      <p>Premium Pakistani Fashion</p>
 
-      <br />
+      <p>WhatsApp: +92 3377190902</p>
 
-      <p>
-        <strong>WhatsApp:</strong> 0300-5220556
-      </p>
+      <p>Adress:P13-B-Muslim Town Faisalabad.</p>
 
-      <p>
-        <strong>Email:</strong> sanasumbal001@yahoo.com
-      </p>
+      <div className="social-links">
+  <a
+    href="https://www.instagram.com/luxenichethreads/"
+    target="_blank"
+    rel="noreferrer"
+  >
+    <FaInstagram /> Instagram
+  </a>
 
-      <br />
+  <a
+    href="https://www.facebook.com/people/Luxe-NicheThreads/pfbid02fmKWfv7t1T6uwWCFh5fVDgXYZeUaDwbj3Ymt6qVVnu98DZtE5xjQwqryuKpR5YcEl/"
+    target="_blank"
+    rel="noreferrer"
+  >
+    <FaFacebookF /> Facebook
+  </a>
 
-      <p>
-        New Arrivals | Luxury Lawn | Pret |
-        Unstitched | Sale
-      </p>
+  <a
+    href="https://wa.me/923377190902"
+    target="_blank"
+    rel="noreferrer"
+  >
+    <FaWhatsapp /> WhatsApp
+  </a>
+</div>
 
-      <br />
-
-      <p>
-        Customer Support Available Monday to Saturday
-      </p>
-
-      <br />
-
-      <p>
-        © 2026 Luxe Niche Threads. All Rights Reserved.
-      </p>
+      <p>© 2018 Luxe Niche Threads</p>
     </footer>
   );
 }

@@ -1,13 +1,10 @@
-import React from "react";
-
 function Cart({ cartItems = [] }) {
-  // reusable helper (prevents duplication)
-  const getSalePrice = (item) => {
-    return item.originalPrice - (item.originalPrice * item.discount) / 100;
-  };
-
   const total = cartItems.reduce((sum, item) => {
-    return sum + getSalePrice(item);
+    const salePrice =
+      item.originalPrice -
+      (item.originalPrice * item.discount) / 100;
+
+    return sum + salePrice;
   }, 0);
 
   return (
@@ -19,12 +16,23 @@ function Cart({ cartItems = [] }) {
       ) : (
         <>
           {cartItems.map((item, index) => (
-            <div key={index} className="cart-item">
+            <div
+              key={index}
+              className="cart-item"
+            >
               <p>
                 <strong>{item.name}</strong>
               </p>
 
-              <p>Rs. {getSalePrice(item).toFixed(0)}</p>
+              <p>
+                Rs.
+                {(
+                  item.originalPrice -
+                  (item.originalPrice *
+                    item.discount) /
+                    100
+                ).toFixed(0)}
+              </p>
             </div>
           ))}
 
