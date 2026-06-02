@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 function Navbar({ cartCount }) {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -17,11 +18,10 @@ function Navbar({ cartCount }) {
         <div className="logo">
           LUXE NICHE THREADS
         </div>
-
-        <div className="cart-icon">
-          🛒 Cart ({cartCount})
-        </div>
-
+        
+       <Link to="/cart" className="cart-icon">
+  🛒 Cart ({cartCount})
+</Link>
       </nav>
 
       {/* CATEGORY BAR */}

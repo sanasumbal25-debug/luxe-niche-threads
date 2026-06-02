@@ -74,24 +74,22 @@ function ProductCard({ product, addToCart }) {
 
         <p><strong>Dupatta:</strong> {product.dupatta}</p>
       </div>
-      <div className="size-box">
-
-  {["S", "M", "L", "XL"].map((size) => (
-
-    <span
-      key={size}
-      className={
-        product.availableSizes?.includes(size)
-          ? "size-active"
-          : "size-disabled"
-      }
-    >
-      {size}
-    </span>
-
-  ))}
-
-</div>
+      {product.stitched === "Stitched" && (
+  <div className="size-box">
+    {["S", "M", "L", "XL"].map((size) => (
+      <span
+        key={size}
+        className={
+          product.availableSizes?.includes(size)
+            ? "size-active"
+            : "size-disabled"
+        }
+      >
+        {size}
+      </span>
+    ))}
+  </div>
+)}
       {product.stitched === "Stitched" && (
         <select className="size-select">
           <option>Select Size</option>
@@ -156,9 +154,10 @@ function ProductCard({ product, addToCart }) {
 </button>
 
       <button
-        className="cart-btn"
-        onClick={() => addToCart(product)}
-      >
+  className="cart-btn"
+  disabled={product.soldOut}
+  onClick={() => addToCart(product)}
+> 
         Add To Cart
       </button>
 

@@ -1,7 +1,15 @@
 import Cart from "../components/Cart";
 
-function CartPage({ cartItems }) {
-  return <Cart cartItems={cartItems} />;
+function CartPage({
+  cartItems,
+  removeFromCart,
+}) {
+  return (
+    <Cart
+      cartItems={cartItems}
+      removeFromCart={removeFromCart}
+    />
+  );
 }
 
 export default CartPage;

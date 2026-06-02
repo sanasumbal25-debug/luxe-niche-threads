@@ -28,7 +28,8 @@ function Hero() {
       />
 
       <div className="hero-overlay">
-  <h1>LUXE NICHE THREADS</h1>
+  <h1>LUXE NICHE THREADS
+  </h1>
         <p>Luxury Eastern Wear • Pret • Lawn • Unstitched</p>
       </div>
     </section>

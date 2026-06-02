@@ -7,7 +7,15 @@ import Cart from "./components/Cart";
 import CheckoutForm from "./components/CheckoutForm";
 import Policies from "./pages/Policies";
 import Footer from "./components/Footer";
+import { Routes, Route } from "react-router-dom";
+import Reviews from "./components/Reviews";
+import OrderSuccess from "./pages/OrderSuccess";
+import InstagramGallery from "./components/InstagramGallery";
 
+import CartPage from "./pages/CartPage";
+import Checkout from "./pages/Checkout";
+import Contact from "./pages/Contact";
+import AboutUs from "./pages/AboutUs";
 import suit1 from "./assets/suit1.jpg";
 import suit1a from "./assets/suit1a.jpg";
 import suit2 from "./assets/suit2.jpg";
@@ -25,22 +33,24 @@ import suit12 from "./assets/suit12.jpg";
 const products = [
   {
     id: 1,
-    brand: "SANA FASHION",
+    brand: "SAPPHIRE",
     name: "Luxury Lawn Collection",
     originalPrice: 8990,
     discount: 30,
     fabric: "Premium Lawn",
     color: "Teal Blue",
     type: "3 Piece",
-    stitched: "Unstitched",
+    Stitched: "Unstitched",
+    category: "Luxery",
     shirt: "2.5 Meter",
     trouser: "2.5 Meter",
     dupatta: "2.5 Meter",
+    soldOut: false,
     images: [suit1, suit1a],
   },
   {
     id: 2,
-    brand: "SANA FASHION",
+    brand: "NISHAT LINEN",
     name: "Summer Lawn Suit",
     originalPrice: 7990,
     discount: 25,
@@ -48,14 +58,17 @@ const products = [
     color: "Black",
     type: "3 Piece",
     stitched: "Stitched",
+    category: "Stitched",
     shirt: "Medium",
     trouser: "Medium",
     dupatta: "2.5 Meter",
+    availableSizes: ["M", "L", "XL"],
+    soldOut: false,
     image: suit2,
   },
   {
     id: 3,
-    brand: "SANA FASHION",
+    brand: "ADAN LIBAS",
     name: "Embroidered Lawn",
     originalPrice: 9990,
     discount: 35,
@@ -63,14 +76,16 @@ const products = [
     color: "Pink",
     type: "3 Piece",
     stitched: "Unstitched",
+    category: "Lawn",
     shirt: "2.5 Meter",
     trouser: "2.5 Meter",
     dupatta: "2.5 Meter",
+    soldOut: true,
     image: suit3,
   },
   {
     id: 4,
-    brand: "SANA FASHION",
+    brand: "SHA POSH",
     name: "Festive Wear",
     originalPrice: 10990,
     discount: 30,
@@ -78,14 +93,16 @@ const products = [
     color: "Maroon",
     type: "3 Piece",
     stitched: "Stitched",
+    category: "Pret",
     shirt: "Large",
     trouser: "Large",
     dupatta: "2.5 Meter",
+    soldOut: true,
     image: suit4,
   },
   {
     id: 5,
-    brand: "SANA FASHION",
+    brand: "JAZMIN",
     name: "Luxury Pret",
     originalPrice: 12990,
     discount: 40,
@@ -93,14 +110,16 @@ const products = [
     color: "Olive",
     type: "2 Piece",
     stitched: "Stitched",
+    category: "Pret",
     shirt: "Medium",
     trouser: "Medium",
     dupatta: "-",
+    soldOut: true,
     image: suit5,
   },
   {
     id: 6,
-    brand: "SANA FASHION",
+    brand: "SAPPHIRE",
     name: "Elegant Suit",
     originalPrice: 6990,
     discount: 20,
@@ -108,14 +127,16 @@ const products = [
     color: "Grey",
     type: "2 Piece",
     stitched: "Unstitched",
+    category: "Pret",
     shirt: "2.5 Meter",
     trouser: "2.5 Meter",
     dupatta: "-",
+    soldOut: true,
     image: suit6,
   },
   {
     id: 7,
-    brand: "SANA FASHION",
+    brand: "SAPPHIRE",
     name: "Premium Lawn",
     originalPrice: 8990,
     discount: 30,
@@ -123,15 +144,16 @@ const products = [
     color: "White",
     type: "3 Piece",
     stitched: "Unstitched",
+    category: "Pret",
     shirt: "2.5 Meter",
     trouser: "2.5 Meter",
     dupatta: "2.5 Meter",
-    soldout: true,
+    soldOut: true,
     image: suit7,
   },
   {
     id: 8,
-    brand: "SANA FASHION",
+    brand: "NISHAT LINEN",
     name: "Printed Lawn",
     originalPrice: 5990,
     discount: 15,
@@ -139,14 +161,16 @@ const products = [
     color: "Yellow",
     type: "3 Piece",
     stitched: "Unstitched",
+    category: "Pret",
     shirt: "2.5 Meter",
     trouser: "2.5 Meter",
     dupatta: "2.5 Meter",
+    soldOut: true,
     image: suit8,
   },
   {
     id: 9,
-    brand: "SANA FASHION",
+    brand: "SAPPHIRE",
     name: "Luxury Cotton",
     originalPrice: 7490,
     discount: 20,
@@ -154,9 +178,11 @@ const products = [
     color: "Blue",
     type: "2 Piece",
     stitched: "Stitched",
+    category: "Pret",
     shirt: "Large",
     trouser: "Large",
     dupatta: "-",
+    soldOut: true,
     image: suit9,
   },
   {
@@ -169,9 +195,12 @@ const products = [
     color: "Purple",
     type: "3 Piece",
     stitched: "Unstitched",
+    category: "Pret",
     shirt: "2.5 Meter",
     trouser: "2.5 Meter",
     dupatta: "2.5 Meter",
+    availableSizes: [],
+    soldOut: true,
     image: suit10,
   },
   {
@@ -184,6 +213,7 @@ const products = [
     color: "Peach",
     type: "3 Piece",
     stitched: "Stitched",
+    category: "lawn",
     shirt: "Medium",
     trouser: "Medium",
     dupatta: "2.5 Meter",
@@ -199,6 +229,7 @@ const products = [
     color: "Green",
     type: "3 Piece",
     stitched: "Unstitched",
+    category: "Pret",
     shirt: "2.5 Meter",
     trouser: "2.5 Meter",
     dupatta: "2.5 Meter",
@@ -209,6 +240,8 @@ const products = [
 function App() {
   const [cartItems, setCartItems] = useState([]);
   const [sortOption, setSortOption] = useState("default");
+  const [selectedCategory, setSelectedCategory] =
+  useState("All");
   const [gridView, setGridView] = useState(4); // Default to 4 product columns
 
   const addToCart = (product) => {
@@ -244,83 +277,163 @@ function App() {
 
   return (
     <>
-      <Navbar cartCount={cartItems.length} />
+  <Navbar cartCount={cartItems.length} />
 
-      <Hero />
+  <Routes>
 
-      <Cart cartItems={cartItems} removeFromCart={removeFromCart} />
+    <Route
+  path="/success"
+  element={<OrderSuccess />}
+/>
 
-      <div className="section-title">
-        <h2>NEW ARRIVALS</h2>
-      </div>
+    <Route
+      path="/"
+      element={
+        <>
+          <Hero />
 
-      {/* FILTER BLOCK - ALIGNED TO THE RIGHT */}
-      <div className="shop-toolbar">
-        <div className="toolbar-controls">
-          <select
-            value={sortOption}
-            onChange={(e) => setSortOption(e.target.value)}
-            className="sort-select"
-          >
-            <option value="default">Sort Products ▼</option>
-            <option value="low-high">Price Low → High</option>
-            <option value="high-low">Price High → Low</option>
-            <option value="discount">Highest Discount</option>
-          </select>
-
-          {/* Grid symbols layout options */}
-          <div className="grid-toggle-icons">
-            <button 
-              className={`icon-btn ${gridView === 1 ? 'active' : ''}`}
-              onClick={() => setGridView(1)} 
-              title="1 Column Layout"
-            >
-              ▥
-            </button>
-            <button 
-              className={`icon-btn ${gridView === 2 ? 'active' : ''}`}
-              onClick={() => setGridView(2)} 
-              title="2 Columns Layout"
-            >
-              ▦
-            </button>
-            <button 
-              className={`icon-btn ${gridView === 4 ? 'active' : ''}`}
-              onClick={() => setGridView(4)} 
-              title="4 Columns Layout"
-            >
-              ☷
-            </button>
+          <div className="section-title">
+            <h2>NEW ARRIVALS</h2>
           </div>
-        </div>
-      </div>
+          <div className="category-filter">
 
-      {/* WORKABLE GRID DISPLAY CONTROLLER */}
-      <section className={`products grid-${gridView}`}>
-        {sortedProducts.map((product) => (
-          <ProductCard
-            key={product.id}
-            product={product}
-            addToCart={addToCart}
-          />
-        ))}
-      </section>
+  <button
+    onClick={() =>
+      setSelectedCategory("All")
+    }
+  >
+    All
+  </button>
 
-      <CheckoutForm />
+  <button
+    onClick={() =>
+      setSelectedCategory("Pret")
+    }
+  >
+    Pret
+  </button>
 
-      <Policies />
+  <button
+    onClick={() =>
+      setSelectedCategory("Unstitched")
+    }
+  >
+    Unstitched
+  </button>
 
-      <Footer />
+  <button
+    onClick={() =>
+      setSelectedCategory("Luxury")
+    }
+  >
+    Luxury
+  </button>
 
-      <a
-        href="https://wa.me/923377190902"
-        className="floating-whatsapp"
-        target="_blank"
-        rel="noreferrer"
-      >
-        <FaWhatsapp />
-      </a>
-    </>
+  <button
+    onClick={() =>
+      setSelectedCategory("Sale")
+    }
+  >
+    Sale
+  </button>
+
+</div>
+          <div className="shop-toolbar">
+            <div className="toolbar-controls">
+
+              <select
+                value={sortOption}
+                onChange={(e) =>
+                  setSortOption(e.target.value)
+                }
+                className="sort-select"
+              >
+                <option value="default">
+                  Sort Products ▼
+                </option>
+
+                <option value="low-high">
+                  Price Low → High
+                </option>
+
+                <option value="high-low">
+                  Price High → Low
+                </option>
+
+                <option value="discount">
+                  Highest Discount
+                </option>
+
+              </select>
+
+            </div>
+          </div>
+
+          <section
+            className={`products grid-${gridView}`}
+          >
+            {sortedProducts
+  .filter(
+    (product) =>
+      selectedCategory === "All" ||
+      product.category ===
+        selectedCategory
+  )
+  .map((product) => (
+              <ProductCard
+                key={product.id}
+                product={product}
+                addToCart={addToCart}
+              />
+            ))}
+          </section>
+
+        </>
+      }
+    />
+
+    <Route
+  path="/cart"
+  element={
+    <CartPage
+      cartItems={cartItems}
+      removeFromCart={removeFromCart}
+    />
+  }
+/>
+
+    <Route
+  path="/checkout"
+  element={
+    <Checkout
+      cartItems={cartItems}
+    />
+  }
+/>
+
+    <Route
+      path="/policies"
+      element={<Policies />}
+    />
+
+    <Route
+      path="/contact"
+      element={<Contact />}
+    />
+
+    <Route
+      path="/about"
+      element={<AboutUs />}
+    />
+
+  </Routes>
+
+  <Reviews />
+
+  <InstagramGallery />
+  
+  <Footer />
+</>
   );
 }
 

@@ -1,56 +1,38 @@
-function CheckoutForm() {
+function Checkout() {
   return (
-    <section className="checkout">
-      <h2>Checkout</h2>
+    <div className="checkout-page">
 
-      <input
-        type="text"
-        placeholder="Full Name"
-      />
+      <h1>Checkout</h1>
 
-      <input
-        type="tel"
-        placeholder="Phone Number"
-      />
+      <form className="checkout-form">
 
-      <input
-        type="email"
-        placeholder="Email Address"
-      />
+        <input
+          type="text"
+          placeholder="Full Name"
+        />
 
-      <input
-        type="text"
-        placeholder="City"
-      />
+        <input
+          type="tel"
+          placeholder="Phone Number"
+        />
 
-      <textarea
-        rows="4"
-        placeholder="Complete Delivery Address"
-      ></textarea>
+        <input
+          type="email"
+          placeholder="Email Address"
+        />
 
-      <textarea
-        rows="3"
-        placeholder="Order Notes (Optional)"
-      ></textarea>
+        <textarea
+          placeholder="Delivery Address"
+        />
 
-      <button>Place Order</button>
+        <button type="submit">
+          Place Order
+        </button>
 
-      <p className="advance-note">
-        ⚠ 30% advance payment is required before order
-        dispatch. Remaining 70% can be paid through Cash
-        on Delivery (COD).
-      </p>
+      </form>
 
-      <p
-        style={{
-          marginTop: "15px",
-          fontWeight: "bold",
-        }}
-      >
-        WhatsApp Orders: 0300-5220556
-      </p>
-    </section>
+    </div>
   );
 }
 
-export default CheckoutForm;
+export default Checkout;
